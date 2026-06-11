@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBSHS Science CBT Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="exam-container">
+        <header>
+            <div class="school-header">
+                <h1>IBEJU SENIOR HIGH SCHOOL</h1>
+                <p>Science Mock Examination Portal</p>
+            </div>
+            <div id="timer-box" class="hidden">120:00</div>
+        </header>
+
+        <div id="start-screen" class="quiz-step">
+            <div id="quiz-body">
+                <h2 style="color: #003366; margin-top: 0;">Candidate Authentication</h2>
+                <p style="color: #666; margin-bottom: 20px;">Please enter your full official name to initialize your examination paper.</p>
+                
+                <label for="student-name" style="font-weight: bold; display: block; margin-bottom: 8px; color: #333;">Candidate Full Name:</label>
+                <input type="text" id="student-name" placeholder="e.g., Owoaje David Oluwadarasimi" required>
+                
+                <button id="begin-btn" onclick="startExam()">INITIALIZE & START EXAM</button>
+            </div>
+        </div>
+
+        <div id="exam-screen" class="quiz-step hidden">
+            <div style="padding: 30px 30px 0 30px;">
+                <div class="subject-nav">
+                    <button class="tab-btn active">Science Exam</button>
+                </div>
+            </div>
+
+            <div id="quiz-body">
+                <div class="exam-meta">
+                    <span id="q-number">Question 1 of --</span>
+                    <span style="color: #e74c3c;">Target: SS3 Mock</span>
+                </div>
+                
+                <p id="q-text">Loading question context...</p>
+                
+                <div id="options-grid"></div>
+            </div>
+        </div>
+
+        <div id="exam-controls" class="hidden">
+            <button id="prev-btn" class="nav-btn" onclick="navigate(-1)">⬅ Previous</button>
+            <button id="next-btn" class="nav-btn" onclick="navigate(1)">Next ➡</button>
+            <button id="submit-btn" class="hidden" onclick="finishExam()">SUBMIT EXAMINATION</button>
+        </div>
+    </div>
+
+    <div id="result-modal" class="modal-overlay hidden">
+        <div class="result-card">
+            <h2 style="color: #003366; margin-top: 0;">Examination Performance Profile</h2>
+            <p style="color: #777;">Your responses have been graded successfully.</p>
+            
+            <div class="grand-total">
+                <h4>FINAL SCORE</h4>
+                <h1 id="res-total">0/0</h1>
+                <p id="res-percent" style="color: #27ae60; font-weight: bold; margin: 0; font-size: 1.2rem;">0.0%</p>
+            </div>
+
+            <div class="score-breakdown">
+                <div class="score-box">
+                    <h4>CANDIDATE</h4>
+                    <p id="res-candidate-name" style="font-size: 1.1rem;">Name</p>
+                </div>
+                <div class="score-box">
+                    <h4>VIOLATIONS</h4>
+                    <p id="res-warnings" style="color: #c0392b; font-size: 1.1rem;">0</p>
+                </div>
+            </div>
+
+            <p style="font-size: 0.85rem; color: #888; margin-bottom: 20px;">Click below to transmit your verified scoresheet straight to the department admin portal verification line.</p>
+            <button id="wa-submit-btn" onclick="sendToWhatsApp()">🚀 TRANSMIT TO VERIFICATION LINE</button>
+        </div>
+    </div>
+
+    <div class="dev-footer">
+        Portal Architecture Engineered by Software Dev Unit
+    </div>
+
+    <script src="question.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
